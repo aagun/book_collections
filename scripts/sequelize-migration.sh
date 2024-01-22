@@ -1,12 +1,12 @@
 npx sequelize-cli init
 
 npx sequelize-cli model:generate \
-  --name categories \
+  --name Categories \
   --attributes \
     "name:string"
 
 npx sequelize-cli model:generate \
-  --name books \
+  --name Books \
   --attributes \
     "title:string, \
     description:string, \
@@ -17,4 +17,10 @@ npx sequelize-cli model:generate \
     thickness:integer, \
     categoryId:integer"
 
-npx squelize-cli db:migrate
+npx sequelize-cli model:generate \
+  --name Users \
+  --atrributes \
+    "username:string, \
+    password:string"
+
+npx sequelize-cli db:migrate
