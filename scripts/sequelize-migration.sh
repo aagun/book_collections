@@ -23,4 +23,9 @@ npx sequelize-cli model:generate \
     "username:string, \
     password:string"
 
+npx sequelize-cli model:generate \
+  --name Authentications \
+  --atrributes \
+    "token:string"
+
 npx sequelize-cli db:migrate

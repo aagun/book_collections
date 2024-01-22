@@ -25,7 +25,7 @@ async function postAuthentication(req, res) {
   }));
 
   if (!user) {
-    throw new UnauthorizedException(ErrorMessages.Failed);
+    throw new UnauthorizedException(ErrorMessages.AuthenticationError);
   }
 
   // Validate password is correct
@@ -62,7 +62,7 @@ async function patchAuthentication(req, res)  {
   const [_, auth] = await to(db.Authentications.findByPk(req.body.refreshToken));
 
   if (!auth) {
-    throw new UnauthorizedException(ErrorMessages.Failed);
+    throw new UnauthorizedException(ErrorMessages.Unauthorized);
   }
 
   const {userId, username} = req.decoded;
@@ -82,7 +82,7 @@ async function deleteAuthentication(req, res) {
   const [_, auth] = await to(db.Authentications.findByPk(refreshToken));
 
   if (!auth) {
-    throw new UnauthorizedException(ErrorMessages.Failed);
+    throw new UnauthorizedException(ErrorMessages.Unauthorized);
   }
 
   const [error] = await to(db.Authentications.destroy({where: {token: refreshToken}}));

@@ -1,0 +1,1 @@
+docker-compose down -v --remove-orphans && sudo rm -rf /home/vierkanon/Developments/job-test/sunberhub/bootcamp/nodejs/bookstore/backend/docker/mysql/volumes/data

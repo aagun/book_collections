@@ -8,3 +8,4 @@ docker/mysql/volumes/**
 !docker/
 !docker/mysql
 !docker/mysql/volumes
+!docker/mysql/mysql.env
