@@ -42,6 +42,8 @@ async function postBook(req, res){
     categoryId
   } = req.body;
 
+  let err, category;
+  
   [err, category] = await to(db.Categories.findByPk(Number(categoryId)));
 
   if (!category) {
@@ -50,7 +52,7 @@ async function postBook(req, res){
 
   const thickness = thicknessOfBook(totalPage);
 
-  const [err] = await to (db.Books.create({
+  [err] = await to (db.Books.create({
     title,
     description,
     imageUrl,
