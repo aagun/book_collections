@@ -48,13 +48,13 @@ async function patchCategory(req, res) {
 
   // Execute update category
   const {name} = req.body;
-  const [err] = db.categories.update(
+  const [err] = await to(db.Categories.update(
     {name},
     {
       where: {
         id: Number(id)
       }
-    });
+    }));
 
   if (err) {
     throw new InternalServerErrorException(ErrorMessages.UpdateFail);
